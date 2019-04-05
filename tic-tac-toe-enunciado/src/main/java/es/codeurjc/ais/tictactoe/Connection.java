@@ -16,7 +16,9 @@ public class Connection {
 
 	public Connection(ObjectMapper json, WebSocketSession session) {
 		this.json = json;
-		this.session = session;
+		this.session = session;   
+                
+                
 	}
 
 	public void sendEvent(Event event) {
