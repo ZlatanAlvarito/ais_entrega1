@@ -102,7 +102,7 @@ public class TicTacToeGame {
 	}
 
 	public boolean checkTurn(int playerId) {
-		return this.players.get(this.currentTurn).getId() == playerId;
+		return this.players.get(this.currentTurn).getIdPlayer() == playerId;
 	}
 
 	public WinnerResult checkWinner() {
@@ -127,7 +127,7 @@ public class TicTacToeGame {
 
 		if (this.players.size() < 2) {
 
-			if (this.players.isEmpty() || players.get(0).getId() != player.getId()) {
+			if (this.players.isEmpty() || players.get(0).getIdPlayer() != player.getIdPlayer()) {
 
 				this.players.add(player);
 				this.ready = this.players.size() == 2;
