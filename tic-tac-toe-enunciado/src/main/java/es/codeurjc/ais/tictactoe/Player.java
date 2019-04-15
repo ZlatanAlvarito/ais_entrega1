@@ -23,19 +23,43 @@ public class Player {
     private long idPlayer;
     private String label;
     private String name;
-    private ArrayList<Partidas> partidas;
+    private String apellido1;
+    private String apellido2;
+    private String email;
+    private String pass;
+    private Partidas partidas;
+    private Integer totalPartidas;
+    private Integer victorias;
+    private Integer derrotas;
+    private Integer empates;
+    
 
     public Player() {
+    }
+    
+    public Player(long idPlayer) {
+        this.idPlayer = idPlayer;
     }
 
     public Player(long idPlayer, String label, String name) {
         this.idPlayer = idPlayer;
         this.label = label;
+        this.name = name;
     }
 
-    public Player(String name, ArrayList<Partidas> partidas) {
+    public Player(String label, String name, String apellido1, String apellido2,String email,String pass,Partidas partidas,Integer victorias, Integer derrotas, Integer empates, Integer totalPartidas) {
+        
+        this.label = label;
         this.name = name;
-        this.partidas = partidas;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.email = email;
+        this.pass = pass;
+        this.partidas = new Partidas();
+        this.victorias = victorias;
+        this.derrotas= derrotas;
+        this.empates = empates;  
+        this.totalPartidas = totalPartidas;
     }
 
     public String getLabel() {
@@ -50,7 +74,7 @@ public class Player {
         return name;
     }
 
-    public ArrayList<Partidas> getPartidas() {
+    public Partidas getPartidas() {
         return partidas;
     }
 
@@ -66,9 +90,78 @@ public class Player {
         this.name = name;
     }
 
-    public void setPartidas(ArrayList<Partidas> partidas) {
+    public void setPartidas(Partidas partidas) {
         this.partidas = partidas;
     }
+
+    public String getApellido1() {
+        return apellido1;
+    }
+
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
+    }
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public Integer getVictorias() {
+        return victorias;
+    }
+
+    public void setVictorias(Integer victorias) {
+        this.victorias = victorias;
+    }
+
+    public Integer getDerrotas() {
+        return derrotas;
+    }
+
+    public void setDerrotas(Integer derrotas) {
+        this.derrotas = derrotas;
+    }
+
+    public Integer getEmpates() {
+        return empates;
+    }
+
+    public void setEmpates(Integer empates) {
+        this.empates = empates;
+    }
+
+    public Integer getTotalPartidas() {
+        return totalPartidas;
+    }
+
+    public void setTotalPartidas(Integer totalPartidas) {
+        this.totalPartidas = totalPartidas;
+    }
+    
+    
+    
+    
+    
 
     @Override
     public String toString() {
