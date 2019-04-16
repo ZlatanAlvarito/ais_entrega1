@@ -22,9 +22,9 @@ public class PlayerController {
     @Autowired
     private PlayerRepository repositorioPlayer;
     @PostMapping("/añadir/player")
-    public String añadirJugador(@RequestParam long idPlayer,@RequestParam String label,@RequestParam String name,Model model) {
+    public String añadirJugador(@RequestParam String label,@RequestParam String name, @RequestParam String apellido1, @RequestParam String apellido2,@RequestParam String email,@RequestParam String pass,@RequestParam long idpartida,@RequestParam Integer victorias, @RequestParam Integer derrotas,@RequestParam Integer empates,@RequestParam Integer totalPartidas,Model model) {
 
-		Player player = new Player(idPlayer);
+		Player player = new Player(label,name,apellido1,apellido2,email,pass,idpartida,victorias,derrotas,empates,totalPartidas);
 
 		repositorioPlayer.save(player);
 

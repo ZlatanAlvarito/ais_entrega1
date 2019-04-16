@@ -1,6 +1,6 @@
 package es.codeurjc.ais.tictactoe;
 
-import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +27,7 @@ public class Player {
     private String apellido2;
     private String email;
     private String pass;
-    private Partidas partidas;
+    private long idpartida;
     private Integer totalPartidas;
     private Integer victorias;
     private Integer derrotas;
@@ -46,8 +46,13 @@ public class Player {
         this.label = label;
         this.name = name;
     }
+    
+    public Player(String label, String name) {       
+        this.label = label;
+        this.name = name;
+    }
 
-    public Player(String label, String name, String apellido1, String apellido2,String email,String pass,Partidas partidas,Integer victorias, Integer derrotas, Integer empates, Integer totalPartidas) {
+    public Player(String label, String name, String apellido1, String apellido2,String email,String pass, long idpartida,Integer victorias, Integer derrotas, Integer empates, Integer totalPartidas) {
         
         this.label = label;
         this.name = name;
@@ -55,7 +60,7 @@ public class Player {
         this.apellido2 = apellido2;
         this.email = email;
         this.pass = pass;
-        this.partidas = new Partidas();
+        this.idpartida = idpartida;
         this.victorias = victorias;
         this.derrotas= derrotas;
         this.empates = empates;  
@@ -74,9 +79,13 @@ public class Player {
         return name;
     }
 
-    public Partidas getPartidas() {
-        return partidas;
+    public long getIdpartida() {
+        return idpartida;
     }
+
+    public void setIdpartida(long idpartida) {
+        this.idpartida = idpartida;
+    }   
 
     public void setIdPlayer(long idPlayer) {
         this.idPlayer = idPlayer;
@@ -88,10 +97,6 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setPartidas(Partidas partidas) {
-        this.partidas = partidas;
     }
 
     public String getApellido1() {

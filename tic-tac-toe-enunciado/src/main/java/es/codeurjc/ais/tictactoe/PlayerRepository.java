@@ -5,7 +5,7 @@
  */
 package es.codeurjc.ais.tictactoe;
 
-import Repositories.*;
+
 import es.codeurjc.ais.tictactoe.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PlayerRepository extends JpaRepository<Player, Long> {
        
 	Player findByIdPlayer(long idPlayer);        
-        Player findByNombre(String name);        
+        Player findByName(String name);        
         Player findByLabel(String label);        
         
 
