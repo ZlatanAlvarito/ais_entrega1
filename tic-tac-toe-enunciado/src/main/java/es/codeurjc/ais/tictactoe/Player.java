@@ -32,7 +32,6 @@ public class Player {
     private Integer victorias;
     private Integer derrotas;
     private Integer empates;
-    
 
     public Player() {
     }
@@ -163,11 +162,6 @@ public class Player {
         this.totalPartidas = totalPartidas;
     }
     
-    
-    
-    
-    
-
     @Override
     public String toString() {
         return "Jugador [nombre=" + name + "]";
