@@ -1,7 +1,9 @@
 package es.codeurjc.ais.tictactoe;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StatiticsService {
 	
 	@Autowired
@@ -26,13 +28,13 @@ public class StatiticsService {
 		Player pLosser = repositorioPlayer.findByLabel(perdedor);
 		
 		if(pLosser != null) {
-			pLosser.setVictorias(pLosser.getVictorias()+1);
+			pLosser.setDerrotas(pLosser.getDerrotas()+1);
 			pLosser.setTotalPartidas(pLosser.getTotalPartidas()+1);
 			repositorioPlayer.save(pLosser);
 		} else {
 			pLosser = repositorioPlayer.findByName(perdedor);
 			if(pLosser != null) {
-				pLosser.setVictorias(pLosser.getVictorias()+1);
+				pLosser.setDerrotas(pLosser.getDerrotas()+1);
 				pLosser.setTotalPartidas(pLosser.getTotalPartidas()+1);
 				repositorioPlayer.save(pLosser);
 			}

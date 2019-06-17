@@ -3,6 +3,7 @@ package es.codeurjc.ais.tictactoe;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.codeurjc.ais.tictactoe.TicTacToeGame.Event;
 import es.codeurjc.ais.tictactoe.TicTacToeGame.EventType;
+import es.codeurjc.ais.tictactoe.TicTacToeGame.WinnerResult;
 
 //This class is a component. It can autowire any other component using @Autowired annotation 
 public class TicTacToeHandler extends TextWebSocketHandler {
@@ -42,6 +44,9 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 
 	private TicTacToeGame game;
 	private ConcurrentMap<WebSocketSession, Connection> connections = new ConcurrentHashMap<>();
+	
+	@Autowired
+	private StatiticsService statsService;
 
 	public TicTacToeHandler() {
 		newGame();
@@ -87,7 +92,6 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 		ClientToServerMsg msg;
 
 		try {
-			System.out.println("Recibo: " + jsonMsg);
 			msg = json.readValue(jsonMsg, ClientToServerMsg.class);
 		} catch (Exception e) {
 			showError(jsonMsg, e);
@@ -106,13 +110,29 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 				break;
 
 			case MARK:
-				int id;
-				if(game.getPlayers().get(0).getName().equals(msg.data.name)) {
-					id = (int) game.getPlayers().get(0).getId();
-				} else id = (int) game.getPlayers().get(1).getId();
-				if (game.checkTurn(id)) {
+				if (game.checkTurn(msg.data.playerId)) {
 					game.mark(msg.data.cellId);
+					
+					WinnerResult w = game.checkWinner();
+					
+					String name1 = game.getPlayers().get(0).getName();
+					String name2 = game.getPlayers().get(1).getName();
+					
+					int id1 = (int) game.getPlayers().get(0).getId();
+					
+					if(w.win) {
+						if(id1 == msg.data.playerId) {
+							statsService.actualizarVictoria(name1,name2);
+						} else {
+							statsService.actualizarVictoria(name2,name1);
+						}
+					} else {
+						if(game.checkDraw()) {
+							statsService.actualizarEmpate(name1, name2);
+						}
+					}
 				}
+				
 				break;
 
 			case RESTART:
