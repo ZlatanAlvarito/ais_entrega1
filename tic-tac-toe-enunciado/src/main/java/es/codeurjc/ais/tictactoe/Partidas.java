@@ -58,7 +58,7 @@ public class Partidas implements Serializable {
     
     @Override
     public String toString() {
-        return "Partida [Apuesta =" + dinero + ", players =";
+        return "Partida [Apuesta = " + dinero +"]";
     }
 
 }

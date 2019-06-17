@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author ALVARO
  */
 @Controller
-public class WebController {
+public class StaticController {
 
     @Autowired
     private PlayerRepository repositorioPlayer;

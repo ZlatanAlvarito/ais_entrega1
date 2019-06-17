@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface PlayerRepository extends JpaRepository<Player, Long> {
        
-	Player findByIdPlayer(long idPlayer);        
+	Player findById(long id);        
         Player findByName(String name);        
         Player findByLabel(String label);        
         

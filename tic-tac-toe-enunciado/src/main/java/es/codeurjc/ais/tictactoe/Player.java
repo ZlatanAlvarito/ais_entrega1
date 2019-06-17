@@ -20,7 +20,7 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idPlayer;
+    private long id;
     private String label;
     private String name;
     private String apellido1;
@@ -36,12 +36,12 @@ public class Player {
     public Player() {
     }
     
-    public Player(long idPlayer) {
-        this.idPlayer = idPlayer;
+    public Player(long id) {
+        this.id = id;
     }
 
-    public Player(long idPlayer, String label, String name) {
-        this.idPlayer = idPlayer;
+    public Player(long id, String label, String name) {
+        this.id = id;
         this.label = label;
         this.name = name;
     }
@@ -70,8 +70,8 @@ public class Player {
         return label;
     }
 
-    public long getIdPlayer() {
-        return idPlayer;
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -86,8 +86,8 @@ public class Player {
         this.idpartida = idpartida;
     }   
 
-    public void setIdPlayer(long idPlayer) {
-        this.idPlayer = idPlayer;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setLabel(String label) {
