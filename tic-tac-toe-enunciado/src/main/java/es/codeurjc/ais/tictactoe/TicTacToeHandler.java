@@ -87,6 +87,7 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 		ClientToServerMsg msg;
 
 		try {
+			System.out.println("Recibo: " + jsonMsg);
 			msg = json.readValue(jsonMsg, ClientToServerMsg.class);
 		} catch (Exception e) {
 			showError(jsonMsg, e);
@@ -105,7 +106,11 @@ public class TicTacToeHandler extends TextWebSocketHandler {
 				break;
 
 			case MARK:
-				if (game.checkTurn(msg.data.playerId)) {
+				int id;
+				if(game.getPlayers().get(0).getName().equals(msg.data.name)) {
+					id = (int) game.getPlayers().get(0).getId();
+				} else id = (int) game.getPlayers().get(1).getId();
+				if (game.checkTurn(id)) {
 					game.mark(msg.data.cellId);
 				}
 				break;
