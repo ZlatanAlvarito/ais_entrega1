@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<script src="../js/core/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/js/funciones.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3" id="joinForm">
+				<h1 class="text-center colorDark">Introduzca todos los datos</h1>
+				<div class="panel panel-danger">
+					<div class="panel-body">
+						<div class="input-group">
+							<p id="errorGeneral" style="color:#FF0000">El nombre de usuario o email ya han sido utilizados.</p>
+							<script type="text/javascript">$('#errorGeneral').hide();</script>
+							
+							<p id="errorPass" style="color:#FF0000">Las contraseñas no coinciden.</p>
+							<script type="text/javascript">$('#errorPass').hide();</script>
+							
+							<p id="succes" style="color:rgb(0,255,0);">Registro completado.</p>
+							<script type="text/javascript">$('#succes').hide();</script>
+							
+							<input class="form-control input-lg" name="label" id="label" placeholder="Nombre de usuario"/>
+							<input class="form-control input-lg" style="margin-top: 10px" name="name" id="name" placeholder="Nombre"/>
+							<input class="form-control input-lg" style="margin-top: 10px" name="apellido1" id="apellido1" placeholder="Primer apellido"/>
+							<input class="form-control input-lg" style="margin-top: 10px" name="apellido2" id="apellido2" placeholder="Segundo apellido"/>
+							<input class="form-control input-lg" style="margin-top: 10px" name="email" id="email" placeholder="Correo electrónico"/>
+							<input class="form-control input-lg" type="password" style="margin-top: 10px" name="pass1" id="pass1" placeholder="Constraseña"/>
+							<input class="form-control input-lg" type="password" style="margin-top: 10px" name="pass2" id="pass2" placeholder="Repetir contraseña"/>
+							<center><button class="btn btn-lg btn-danger" id="signBtn" style="margin-top: 10px" onclick="signup()">REGISTRAR</button></center>
+							<center><p style="margin-top: 10px">¿Ya tiene una cuenta? <a href='/'>Inicie sesión</a>.</p></center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
